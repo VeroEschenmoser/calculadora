@@ -1,17 +1,24 @@
 
 const titulo= document.createElement("h1")
 titulo.innerText="Calculadora"
+titulo.classList.add("titulo")
+
+
 
 const num1 = document.createElement("input")
 num1.value = ""
+num1.classList.add("display")
 
-//const num2 = document.createElement("input")
+const borrar=document.createElement("button")
+borrar.value= 0
+borrar.innerText="Borrar"
+borrar.classList.add("borrar")
 
-const resultado= document.createElement("h2")
 
 
 const suma= document.createElement ("button")
 suma.innerText= "+"
+suma.classList.add("suma")
 
 const resta= document.createElement ("button")
 resta.innerText= "-"
@@ -26,7 +33,13 @@ const igual=document.createElement("button")
 igual.innerText= "="
 
 
+const off =document.createElement ("button")
+off.innerText= "on/off"
+off.classList.add("off")
+
+
 const app = document.querySelector(".app")
+app.classList.add("calculator")
 
 
 function handleClick(e){
@@ -36,13 +49,8 @@ function handleClick(e){
 
 app.appendChild(titulo)
 app.appendChild(num1)
-//app.appendChild(num2)
-app.appendChild(suma)
-app.appendChild(resta)
-app.appendChild(dividir)
-app.appendChild(multiplicar)
-app.appendChild(igual)
-//app.appendChild(resultado)
+
+
 
 var i=0
 for (i;i<10;i++){
@@ -52,7 +60,16 @@ for (i;i<10;i++){
   boton.value=i
   app.appendChild(boton)
   boton.addEventListener("click", handleClick)
+  
 }
+app.appendChild(suma)
+app.appendChild(resta)
+app.appendChild(dividir)
+app.appendChild(multiplicar)
+app.appendChild(igual)
+app.appendChild(borrar)
+app.appendChild(off)
+
 
 var operacion
 
@@ -82,6 +99,12 @@ function handleClickmultiplicar(e){
 }
 multiplicar.addEventListener("click", handleClickmultiplicar)
 
+function handleClickborrar(e){
+  num1.value=""
+}
+borrar.addEventListener("click", handleClickborrar)
+
+
 
 function handleClickresultado(e){
   operacion+=num1.value
@@ -90,6 +113,10 @@ function handleClickresultado(e){
 igual.addEventListener("click", handleClickresultado)
 
 
+function handleClickoff(e){
+app.classList.toggle("dark-mode")
+}
+off.addEventListener("click", handleClickoff)
 
 
 
@@ -98,43 +125,7 @@ igual.addEventListener("click", handleClickresultado)
 
 
 
-// function handleChangenum1(e){
-  
-//   nro1= e.target.value
 
-// }
-
-
-// function handleChangenum2(e){
-  
-//   nro2=e.target.value
-
-// }
-
-// num1.addEventListener("change", handleChangenum1)
-// num2.addEventListener("change", handleChangenum2)
-
-// function sumar(nro1,nro2){
-  
-//  resultado.innerText= parseInt(nro1)+parseInt(nro2)
-// }
-// 
-
-// function restar(nro1,nro2){
-//   resultado.innerText= parseInt(nro1)-parseInt(nro2)
-// }
-// resta.addEventListener("click", ()=> restar(nro1, nro2))
-
-// function division(nro1,nro2){
-//   resultado.innerText= parseInt(nro1)/parseInt(nro2)
-// }
-// dividir.addEventListener("click", ()=> division(nro1, nro2))
-
-
-// function multi(nro1,nro2){
-//   resultado.innerText= parseInt(nro1)*parseInt(nro2)
-// }
-// multiplicar.addEventListener("click", ()=> multi(nro1, nro2))
 
 
 
